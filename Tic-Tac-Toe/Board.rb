@@ -13,4 +13,13 @@ class Board
         puts "---|---|---"
         puts " #{positions[6]} | #{positions[7]} | #{positions[8]} "   
     end
+
+    def possibleMoves()
+        positions.map.with_index  { |val,idx| idx if val == ""}.compact
+    end
+
+    def fullboard?
+        possibleMoves == []
+    end
+
 end
