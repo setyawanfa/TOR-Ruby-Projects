@@ -3,7 +3,7 @@ class Board
     attr_accessor :positions
 
     def initialize
-        @positions = ["","","","","","","","",""]   
+        @positions = [" "," "," "," "," "," "," "," "," "]   
     end
 
     def showBoard()
@@ -15,7 +15,7 @@ class Board
     end
 
     def possibleMoves()
-        positions.map.with_index  { |val,idx| idx if val == ""}.compact
+        positions.map.with_index  { |val,idx| idx if val == " "}.compact
     end
 
     def fullboard?
