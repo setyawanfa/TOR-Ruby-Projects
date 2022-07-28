@@ -1,4 +1,5 @@
 require 'colorize'
+# Visual module used to display the feedback given to user based on certain condition
 module Visual
   def visualize(failure)
     case failure
@@ -57,7 +58,10 @@ module Visual
   end
 
   def welcome
-    'Welcome to hangman game\n'
+    puts 'Welcome to hangman game\n'
+    puts 'during the game you can opt to save your progress and can load your progress for later'
+    puts 'to save you progress you type `save`'
+    puts 'to quit during the game you could type `quit`'
     #  'Press one below\n'
     #  '1. Start a new game '
     #  '2. Load game'
