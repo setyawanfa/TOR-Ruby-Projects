@@ -19,7 +19,12 @@ class Hangman
     @solved_letters = []
     @incorrect_letters = []
     welcome
-    play
+    choice = gets.chomp
+    if choice = 2 
+      load_game 
+    else
+      play
+    end
   end
 
   def game_over?
@@ -31,7 +36,7 @@ class Hangman
       puts 'Good bye'
       exit 100
     elsif input == 'save'
-      save_json(to_json)
+      save_json(save_to_json)
     else
       input_validation(input)
     end
@@ -75,7 +80,24 @@ class Hangman
     Hangman.new unless input == 'n'
   end
 
-  def to_json
+  def load_game
+    files = list_all_saves
+    welcome if files.nil?
+    which_load = gets.chomp
+    json_to_hangman(read_save(files[which_load.to_i - 1]))
+    visualize(@attempt)
+    play
+  end
+
+  def json_to_hangman(json)
+    @available_letters = json[0]['available_letters']
+    @word = json[0]['word']
+    @attempt = json[0]['attempt']
+    @solved_letters = json[0]['solved_letters']
+    @incorrect_letters = json[0]['incorrect_letters']
+  end
+
+  def save_to_json
     obj = ['available_letters': @available_letters,
            'word': @word,
            'attempt': @attempt,

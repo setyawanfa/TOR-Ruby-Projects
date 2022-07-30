@@ -59,12 +59,15 @@ module Visual
 
   def welcome
     puts 'Welcome to hangman game\n'
+    puts 'Press one below\n'
+    puts '1. Start a new game '
+    puts '2. Load game'
+  end
+
+  def instruction
     puts 'during the game you can opt to save your progress and can load your progress for later'
     puts 'to save you progress you type `save`'
     puts 'to quit during the game you could type `quit`'
-    #  'Press one below\n'
-    #  '1. Start a new game '
-    #  '2. Load game'
   end
 
   def start_new(word)

@@ -10,7 +10,6 @@ module FileInputOutput
     filename = 'lib/google-10000-english-no-swears.txt'
     # chomp: true used to delete character '\n' for each word
     file = IO.readlines(filename, chomp: true)
-    #    binding.pry
     # filter out word with length less than 5 and more than 12 letters
     filtered = file.reject { |n| n.length < 5 || n.length > 12 }
     filtered.sample
@@ -23,7 +22,7 @@ module FileInputOutput
     File.open(filepath, 'w') { |f| f.puts save }
   end
 
-  def read_json(filename)
+  def read_save(filename)
     file = File.read(filename)
     JSON.parse(file)
   end
@@ -31,7 +30,8 @@ module FileInputOutput
   def list_all_saves
     files = Dir['./saves/*.json']
     if !files.nil?
-      # print all files including number
+      files.each_with_index { |item, index| puts "#{index + 1}. #{item}" }
+      files
     else
       puts 'There is no save file'
     end
