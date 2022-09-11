@@ -1,0 +1,14 @@
+= BINARY SEARCH TREE
+
+== Introduction
+
+Binary search tree is a structure in which each node can have at most two children, and in which a unique path exists from the root to every other node.
+The children are called *left child* and *right child*. 
+The *left child* represent value lower than the node.
+The *right child* represent value greater than the node. 
+
+== Specification 
+Binary search tree is implemented as below.
+. `Node` class where it consist of `data`, `left`, and `right`.
+. `Tree` class where accepts array when initialized. Have `root` and  `data` of `Node`
+.. 
