@@ -9,6 +9,23 @@ The *right child* represent value greater than the node.
 
 == Specification 
 Binary search tree is implemented as below.
-. `Node` class where it consist of `data`, `left`, and `right`.
-. `Tree` class where accepts array when initialized. Have `root` and  `data` of `Node`
-.. 
+
+.  `Node` class where it consist of `data`, `left`, and `right`.
+.  `Tree` class where accepts array when initialized. Have following methods :
+.. `build_tree` take array to a balanced binary tree. 
+.. `pretty_print` visualize the binary tree
+.. `insert` accept value and insert it to binary tree.
+.. `delete` accept value and determine either it exist or not in current binary tree. If any, delete the value.
+.. `find` accept value and return the node with given value
+.. `level_order` accept block and traverse in breadth-rifst level order and yeidl each node to the provided block. return array if no block given.
+.. `height` accept a node and return its height
+.. `depth` accept a node and return its depth.
+.. `balanced?` method which check if the tree is balanced.
+.. `rebalance` method which rebalance an unbalanced tree.
+
+
+== checklist
+
+
+== method of testing
+
