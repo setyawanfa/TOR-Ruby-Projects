@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'pry'
 require_relative 'node'
 # Tree
 class Tree
@@ -34,45 +35,40 @@ class Tree
     root
   end
 
-  def succession(root)
-    tree = root
-    leaf = root.right
-    until leaf.left.nil?
-      tree = leaf
-      leaf = leaf.left
-    end
-    if tree.value != root.value
-      tree.left = leaf.right
-    else
-      tree.right = leaf.right
-    end
-    root.data = leaf.data
-    return root
-  end
-
-  def delete_scheme(root)
-    if root.left.nil?
-      temp = root.right
-      root.data = nil
-    elsif root.right.nil?
-      temp = root.left
-      root.data = nil
-    else
-      temp = succession(root)
-    end
-    return temp
-  end
-
   def delete(value, root = @root)
-    return nil if value == root.data
-
     if value < root.data
       root.left = delete(value, root.left)
     elsif value > root.data
       root.right = delete(value, root.right)
     else
-      root = delete_scheme(root)
+      return nil if root.right.nil? && root.left.nil?
+      return root.right if root.left.nil?
+      return root.left if root.right.nil?
+
+      node = root
+      leaf = root.right
+      until leaf.left.nil?
+        node = leaf
+        leaf = leaf.left
+      end
+      if node.data != root.data
+        node.left = leaf.right
+      else
+        node.right = leaf.right
+      end
+      root.data = leaf.data
     end
     root
+  end
+
+  def find(value, root = @root)
+    if value < root.data
+      find(value, root.left)
+    elsif value > root.data
+      find(value, root.right)
+    else
+      return nil if root.data.nil?
+      return root if root.data == value
+    end
   end
 end
