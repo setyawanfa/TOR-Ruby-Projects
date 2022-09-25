@@ -17,7 +17,11 @@ Binary search tree is implemented as below.
 .. `insert` accept value and insert it to binary tree.
 .. `delete` accept value and determine either it exist or not in current binary tree. If any, delete the value.
 .. `find` accept value and return the node with given value
-.. `level_order` accept block and traverse in breadth-rifst level order and yeidl each node to the provided block. return array if no block given.
+.. `level_order` accept block and traverse in breadth-first level order and yeild each node to the provided block. return array if no block given.
+.. `inorder`, `preorder`, `postorder` method accepts a block. Each method should traverse the tree in their respective depth-first order and yield each node to hte provide blocks.return array if no block is given.
+... `inorder` traverse from the left subtree to the root then to the right subtree.
+... `preorder` traverse from the root to left subree then to right subtree
+... `postorder` traverse from the left subtree to the right subtree then to the root
 .. `height` accept a node and return its height
 .. `depth` accept a node and return its depth.
 .. `balanced?` method which check if the tree is balanced.
@@ -27,5 +31,4 @@ Binary search tree is implemented as below.
 == checklist
 
 
-== method of testing
-
+== method of testing  

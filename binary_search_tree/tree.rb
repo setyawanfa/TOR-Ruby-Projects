@@ -71,4 +71,68 @@ class Tree
       return root if root.data == value
     end
   end
+  
+  def level_order(root = @root)
+    q = [root]
+    result = []
+    while q.any?
+      current = q.shift
+      result << current.data
+      q << current.left unless current.left.nil?
+      q << current.right unless current.right.nil?
+    end
+    return result
+  end
+
+  def inorder(root = @root, arr = [])
+    return if root.nil?
+
+    inorder(root.left, arr) unless root.left.nil?
+    arr << root.data
+    inorder(root.right, arr) unless root.right.nil?
+    arr
+  end
+
+  def preorder(root = @root, arr = [])
+    arr << root.data
+    preorder(root.left, arr) unless root.left.nil?
+    preorder(root.right, arr) unless root.right.nil?
+    arr
+  end
+
+  def postorder(root = @root, arr = [])
+    postorder(root.left, arr) unless root.left.nil?
+    postorder(root.right, arr) unless root.right.nil?
+    arr << root.data
+    arr
+  end
+
+  def height(node = @root)
+    return 0 if node.nil?
+
+    (height(node.left) + 1) > (height(node.right) + 1) ? height(node.left) + 1 : height(node.right) + 1
+  end
+
+  def depth(node = @root)
+    count = 0
+    current = @root
+    until current.data == node.data
+      count += 1
+      current = current.left if node.data < current.data
+      current = current.right if node.data > current.data
+    end
+
+    count
+  end
+
+  def balanced?(node = @root)
+    left = height(node.left)
+    right = height(node.right)
+    (left - right).between?(-1, 1)
+  end
+
+  def rebalance
+    array = inorder(@root)
+    @root = build_tree(array.sort.uniq)
+  end
 end

@@ -10,9 +10,24 @@ tree.insert(80)
 p ("=====================")
 tree.pretty_print
 p ("=====================")
-tree.delete(20)
-p ("=====================")
 tree.pretty_print
 p ("=====================")
-p tree.find(70)
+a = tree.find(90)
 p tree.find(90)
+
+p tree.level_order
+
+tree.pretty_print
+
+p tree.inorder
+
+p tree.height
+
+p tree.depth(a)
+
+p tree.balanced?
+
+p ("=====================")
+tree.rebalance
+
+tree.pretty_print
