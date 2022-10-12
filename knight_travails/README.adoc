@@ -1,0 +1,37 @@
+# Knight Travails
+
+. Put together a script that creates a game board and a knight.
+. Treat all possible moves the knight could make as children in a tree. Don’t allow any moves to go off the board.
+. Decide which search algorithm is best to use for this case. Hint: one of them could be a potentially infinite series.
+. Use the chosen search algorithm to find the shortest path between the starting square (or node) and the ending square. Output what that full path looks like, e.g.:
+
+## Solution
+
+Board size is assumed at 8x8 size since there is no information regarding the dynamic allocated board size.
+`Knight` class used to implement data structure and search function in `knight_moves` method.
+
+[%autowidth]
+.`Knight` class method
+|===
+| Method | Input | Output | Description 
+
+| `initialize`
+| `location` 
+| 
+| Initialize the Knight class
+
+| `self.valid?` 
+| `location`
+| Boolean
+| Check if any tile given the input is still on the board (assumed at 8x8 board)
+
+| `children`
+|  
+| Array of `Knight` class
+| create the the possible moves given the current location
+
+| `display`
+| 
+| `location`
+| print the historical step from start until reaching destination
+|===
