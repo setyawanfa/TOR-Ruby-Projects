@@ -1,1 +1,8 @@
 *.html
+binary_search_tree/Gemfile
+binary_search_tree/Gemfile.lock
+knight_travails/Gemfile
+knight_travails/Gemfile.lock
+rspec_training/.rspec
+rspec_training/Gemfile
+rspec_training/Gemfile.lock
