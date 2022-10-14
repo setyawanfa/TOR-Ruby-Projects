@@ -6,3 +6,5 @@ knight_travails/Gemfile.lock
 rspec_training/.rspec
 rspec_training/Gemfile
 rspec_training/Gemfile.lock
+cipherRuby/Gemfile
+cipherRuby/Gemfile.lock
