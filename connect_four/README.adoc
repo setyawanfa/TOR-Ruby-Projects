@@ -1,0 +1,12 @@
+= Connect Four
+
+Connect four is a game where players (2 players) is choose a color/symbol and then take turn dropping those color/symbol into a seven-column, six-row vertically suspended grid. Illustration as below.
+
+image::https://live.staticflickr.com/2201/2396019222_4334c0d2fc_b.jpg[Illustration of connect four game, 640,480]
+
+The objective of the game is to be the first player to get four checker in a row, horizontally, vertically or diagonally.
+
+
+
+Image taken from :
+https://www.flickr.com/photos/unloveable/2396019222
