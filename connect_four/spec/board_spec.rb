@@ -35,6 +35,11 @@ describe Board do
       input = 9
       expect(board.valid_input?(input.to_s, GRID)).to be_falsy
     end
+
+    it 'verify invalid input' do
+      input = 11
+      expect(board.valid_input?(input.to_s, GRID)).to be_falsy
+    end
   end
 
   describe '#column_full?' do
@@ -80,5 +85,60 @@ describe Board do
       end
     end
   end
+  describe '#horizontal_winning?' do
+    subject(:board) { described_class.new }
 
+    it 'expect true when in one row is equal' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.horizontal_winning?('0')).to be_truthy
+    end
+
+    it 'expect false when there is different symbol between searched symbol' do
+      board.instance_variable_set(:@grid, [[nil, '0', nil, nil, nil, nil],
+                                           [nil, '1', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.horizontal_winning?('0')).to be_falsy
+    end
+  end
+
+  describe '#vertical_winning?' do
+    subject(:board) { described_class.new }
+
+    it 'expect true when in one column is same symbol' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           ['0', '0', '0', '0', '0', nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.vertical_winning?('0')).to be_truthy
+    end
+
+    it 'expect false when in there is different symbol between a symbol' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           ['0', '0', '1', '1', '0', '0'],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.vertical_winning?('0')).to be_falsy
+    end
+  end
+
+  describe '#horizontal_winning?' do
+    subject(:board) { described_class.new }
+
+  end
 end
