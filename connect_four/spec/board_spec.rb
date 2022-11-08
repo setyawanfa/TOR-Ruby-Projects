@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 require_relative('../lib/board')
-
+require_relative('../lib/visual')
 GRID = /^[0-6]$/.freeze
 
 describe Board do
@@ -139,6 +139,27 @@ describe Board do
 
   describe '#horizontal_winning?' do
     subject(:board) { described_class.new }
+    it 'expect true if left horizontal combination exist' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, '0', nil, nil],
+                                           [nil, nil, '0', nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           ['0', nil, nil, nil, nil, nil]])
+      expect(board.diagonal_winning?('0')).to be_truthy
 
+    end
+
+    it 'expect true if right horizontal combination exist' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, '0', nil, nil, nil],
+                                           [nil, nil, nil, '0', nil, nil],
+                                           [nil, nil, nil, nil, '0', nil],
+                                           [nil, nil, nil, nil, nil, '0']])
+      expect(board.diagonal_winning?('0')).to be_truthy
+    end
   end
 end
