@@ -8,19 +8,13 @@ class Board
 
   COLUMNS = 7
   ROW = 6
-  GRID = /^[0-6]$/.freeze
   def initialize
     @grid = Array.new(COLUMNS) { Array.new(ROW) }
   end
 
   def place_checkers(col, char)
-    grid[col][grid[col].index(nil)] = char
+    @grid[col][grid[col].index {|x| x.nil?}] = char
   end
-
-  def valid_input?(col, pattern)
-    col.match?(pattern)
-  end
-  # given the column return the boolean
 
   def column_full?(col)
     grid[col].count(nil).zero?
@@ -31,10 +25,9 @@ class Board
     a.all?(0)
   end
 
-  def horizontal_winning?(char, row = 0)
-    return false if row == 6
-
-    return true if grid.transpose[row].each_cons(4).any? { |col| col.all?(char) }
+  def horizontal_winning?(char, row = 0, grid_copy = @grid)
+    return false if row == 6 
+    return true if grid_copy.transpose[row].each_cons(4).any? { |col| col.all?(char) }
 
     horizontal_winning?(char, row += 1)
   end
@@ -69,6 +62,9 @@ class Board
       diagonal_winning?(char, column += 1, row)
     end
   end
-
-  
+ 
+  def any_winning?(char)
+    diagonal_winning?(char) | vertical_winning?(char) | horizontal_winning?(char)
+  end
+ 
 end

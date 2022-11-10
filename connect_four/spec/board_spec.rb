@@ -24,24 +24,6 @@ describe Board do
     end
   end
 
-  describe '#valid_input?' do
-    subject(:board) { described_class.new }
-    it 'verify input is valid' do
-      input = 1
-      expect(board.valid_input?(input.to_s, GRID)).to be_truthy
-    end
-
-    it 'verify invalid input' do
-      input = 9
-      expect(board.valid_input?(input.to_s, GRID)).to be_falsy
-    end
-
-    it 'verify invalid input' do
-      input = 11
-      expect(board.valid_input?(input.to_s, GRID)).to be_falsy
-    end
-  end
-
   describe '#column_full?' do
     subject(:board) { described_class.new }
     before do
@@ -161,5 +143,31 @@ describe Board do
                                            [nil, nil, nil, nil, nil, '0']])
       expect(board.diagonal_winning?('0')).to be_truthy
     end
+  end
+
+  describe '#any_winning' do
+    subject(:board) { described_class.new }
+    it 'expect true if vertical combination exist' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           ['0', '0', '0', '0', nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.any_winning?('0')).to be_truthy
+    end
+
+    it 'expect true if horizontal combination exist' do
+      board.instance_variable_set(:@grid, [[nil, nil, nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, '0', nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil],
+                                           [nil, nil, nil, nil, nil, nil]])
+      expect(board.any_winning?('0')).to be_truthy
+    end
+
   end
 end
