@@ -5,14 +5,13 @@ module Visual
 
   # tranpose then reverse to show the current 
   def display_board(grid)
-    transposed = grid.tranpose.reverse
+    transposed = grid.transpose.reverse
     transposed.each do |el|
-      p '|'
-      el.each do |elem|
-        p "#{elem} |" 
-      end 
-      p '\n'
+      el.map! { |x| x ? x : ' ' }
+    end
+    transposed.each do |el|
+      puts '| ' + el.join(' | ') + ' |'
     end 
-    p '----------------'
+    puts '-----------------------------'
   end
 end

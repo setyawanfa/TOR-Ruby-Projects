@@ -8,7 +8,7 @@ module Messages
   end
 
   def asking_input(player)
-    puts "#{player} turn to put their token"
+    puts "#{player.name} turn to put their token"
     puts 'enter number between 0 and 6:'
     token = gets.chomp
   end
