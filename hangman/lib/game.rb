@@ -20,7 +20,7 @@ class Hangman
     @incorrect_letters = []
     welcome
     choice = gets.chomp
-    if choice = 2 
+    if choice == 2 
       load_game 
     else
       play
